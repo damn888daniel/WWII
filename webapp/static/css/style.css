@@ -1,0 +1,524 @@
+/* Винтажный стиль в духе военных документов 1940-х годов */
+
+@import url('https://fonts.googleapis.com/css2?family=Special+Elite&family=Courier+Prime:wght@400;700&display=swap');
+
+:root {
+    --paper-bg: #f4f1e8;
+    --paper-dark: #e8e4d8;
+    --ink-black: #2b2b2b;
+    --ink-faded: #5a5a5a;
+    --stamp-red: #b22222;
+    --stamp-green: #2d5016;
+    --border-color: #8b7355;
+    --shadow: rgba(0, 0, 0, 0.3);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Courier Prime', monospace;
+    background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+    color: var(--ink-black);
+    line-height: 1.6;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    background: var(--paper-bg);
+    box-shadow: 0 10px 50px var(--shadow);
+    border: 3px solid var(--border-color);
+    position: relative;
+}
+
+/* Эффект старой бумаги */
+.container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background:
+        repeating-linear-gradient(
+            0deg,
+            transparent,
+            transparent 2px,
+            rgba(0,0,0,0.03) 2px,
+            rgba(0,0,0,0.03) 4px
+        );
+    pointer-events: none;
+}
+
+/* Заголовок */
+.header {
+    border-bottom: 4px double var(--border-color);
+    padding: 20px;
+    background: var(--paper-dark);
+    position: relative;
+}
+
+.classification-bar {
+    display: flex;
+    justify-content: space-between;
+    background: var(--ink-black);
+    color: #fff;
+    padding: 8px 15px;
+    font-size: 11px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    margin: -20px -20px 15px -20px;
+}
+
+.classified {
+    color: var(--stamp-red);
+}
+
+.document-id {
+    font-family: 'Courier Prime', monospace;
+}
+
+.main-title {
+    text-align: center;
+    font-family: 'Special Elite', cursive;
+}
+
+.department {
+    display: block;
+    font-size: 28px;
+    font-weight: bold;
+    letter-spacing: 3px;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+}
+
+.subtitle {
+    display: block;
+    font-size: 16px;
+    letter-spacing: 1px;
+    color: var(--ink-faded);
+    margin-bottom: 5px;
+}
+
+.year {
+    display: block;
+    font-size: 12px;
+    font-style: italic;
+    color: var(--ink-faded);
+}
+
+.stamp-container {
+    position: absolute;
+    top: 50%;
+    right: 30px;
+    transform: translateY(-50%) rotate(-15deg);
+}
+
+.stamp {
+    border: 4px solid var(--stamp-red);
+    color: var(--stamp-red);
+    padding: 8px 20px;
+    font-size: 20px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    transform: rotate(10deg);
+    opacity: 0.7;
+    font-family: 'Special Elite', cursive;
+}
+
+/* Основной контент */
+.main-content {
+    padding: 30px;
+}
+
+.section-title {
+    font-family: 'Special Elite', cursive;
+    font-size: 20px;
+    letter-spacing: 2px;
+    border-bottom: 2px solid var(--border-color);
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+}
+
+.mission-brief {
+    background: #fff;
+    border: 2px solid var(--border-color);
+    padding: 20px;
+    margin-bottom: 30px;
+    box-shadow: inset 0 0 10px rgba(0,0,0,0.05);
+}
+
+.briefing-text {
+    font-size: 14px;
+    margin-bottom: 15px;
+    text-align: justify;
+}
+
+.warning-box {
+    background: #fff3cd;
+    border: 2px dashed #856404;
+    padding: 15px;
+    font-size: 13px;
+    color: #856404;
+}
+
+/* Форма загрузки */
+.upload-section {
+    background: #fff;
+    border: 2px solid var(--border-color);
+    padding: 25px;
+    margin-bottom: 30px;
+}
+
+.form-group {
+    margin-bottom: 25px;
+}
+
+.form-label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+.label-text {
+    display: block;
+    font-weight: bold;
+    font-size: 14px;
+    letter-spacing: 1px;
+    margin-bottom: 5px;
+}
+
+.label-subtext {
+    display: block;
+    font-size: 11px;
+    color: var(--ink-faded);
+    font-style: italic;
+}
+
+.file-input-wrapper {
+    position: relative;
+}
+
+#fileInput {
+    position: absolute;
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+}
+
+.file-input-display {
+    border: 3px dashed var(--border-color);
+    padding: 40px;
+    text-align: center;
+    background: var(--paper-dark);
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.file-input-display:hover {
+    background: #e0dcc8;
+    border-color: var(--ink-black);
+}
+
+.upload-icon {
+    display: block;
+    font-size: 48px;
+    margin-bottom: 10px;
+}
+
+.upload-text {
+    font-size: 14px;
+    color: var(--ink-faded);
+}
+
+.image-preview {
+    margin-top: 15px;
+    text-align: center;
+}
+
+.image-preview img {
+    max-width: 100%;
+    max-height: 400px;
+    border: 3px solid var(--border-color);
+    box-shadow: 0 4px 10px var(--shadow);
+}
+
+.form-textarea {
+    width: 100%;
+    padding: 12px;
+    font-family: 'Courier Prime', monospace;
+    font-size: 14px;
+    border: 2px solid var(--border-color);
+    background: #fff;
+    resize: vertical;
+}
+
+.form-textarea:focus {
+    outline: none;
+    border-color: var(--ink-black);
+}
+
+.submit-btn {
+    width: 100%;
+    padding: 15px;
+    font-family: 'Special Elite', cursive;
+    font-size: 18px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    background: var(--ink-black);
+    color: #fff;
+    border: 3px solid var(--border-color);
+    cursor: pointer;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.submit-btn:hover {
+    background: #1a1a1a;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px var(--shadow);
+}
+
+.submit-btn:active {
+    transform: translateY(0);
+}
+
+/* Индикатор загрузки */
+.loading-indicator {
+    text-align: center;
+    padding: 40px;
+    background: var(--paper-dark);
+    border: 2px solid var(--border-color);
+    margin-top: 20px;
+}
+
+.loading-spinner {
+    width: 60px;
+    height: 60px;
+    border: 6px solid var(--paper-dark);
+    border-top: 6px solid var(--ink-black);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin: 0 auto 20px;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.loading-text {
+    font-weight: bold;
+    letter-spacing: 2px;
+    animation: blink 1.5s infinite;
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
+
+/* Результаты */
+.results-section {
+    background: #fff;
+    border: 3px solid var(--border-color);
+    padding: 25px;
+    animation: fadeIn 0.5s;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.report-container {
+    background: var(--paper-dark);
+    padding: 20px;
+    border: 2px solid var(--border-color);
+}
+
+.report-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid var(--border-color);
+}
+
+.report-stamp {
+    font-family: 'Special Elite', cursive;
+    font-size: 32px;
+    font-weight: bold;
+    padding: 10px 25px;
+    border: 4px solid var(--stamp-green);
+    color: var(--stamp-green);
+    transform: rotate(-5deg);
+    letter-spacing: 3px;
+}
+
+.report-stamp.synthetic {
+    border-color: var(--stamp-red);
+    color: var(--stamp-red);
+}
+
+.report-meta {
+    text-align: right;
+    font-size: 12px;
+}
+
+.report-date {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.report-confidence {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.verdict-box {
+    background: #fff;
+    border: 2px solid var(--border-color);
+    padding: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.verdict-label {
+    font-size: 12px;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+    color: var(--ink-faded);
+}
+
+.verdict-text {
+    font-family: 'Special Elite', cursive;
+    font-size: 28px;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+.verdict-text.real {
+    color: var(--stamp-green);
+}
+
+.verdict-text.synthetic {
+    color: var(--stamp-red);
+}
+
+.metrics-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.metric-card {
+    background: #fff;
+    border: 2px solid var(--border-color);
+    padding: 15px;
+}
+
+.metric-label {
+    font-size: 11px;
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+    color: var(--ink-faded);
+}
+
+.metric-value {
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.metric-bar {
+    height: 20px;
+    background: var(--paper-dark);
+    border: 1px solid var(--border-color);
+    overflow: hidden;
+}
+
+.metric-fill {
+    height: 100%;
+    transition: width 0.8s ease;
+}
+
+.metric-fill-real {
+    background: var(--stamp-green);
+}
+
+.metric-fill-fake {
+    background: var(--stamp-red);
+}
+
+.interpretation-box {
+    background: #fff;
+    border: 2px solid var(--border-color);
+    padding: 20px;
+}
+
+.interpretation-box h3 {
+    font-family: 'Special Elite', cursive;
+    font-size: 14px;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+}
+
+.interpretation-box p {
+    font-size: 13px;
+    line-height: 1.8;
+}
+
+/* Футер */
+.footer {
+    border-top: 4px double var(--border-color);
+    padding: 20px;
+    background: var(--paper-dark);
+    text-align: center;
+}
+
+.footer-text {
+    font-size: 11px;
+    color: var(--ink-faded);
+    margin-top: 10px;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .metrics-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .department {
+        font-size: 20px;
+    }
+
+    .stamp-container {
+        position: static;
+        transform: none;
+        text-align: center;
+        margin-top: 15px;
+    }
+
+    .report-header {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .report-meta {
+        text-align: center;
+    }
+}

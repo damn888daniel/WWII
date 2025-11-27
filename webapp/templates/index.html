@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WWII Photo Authenticity Detector | 1940s Intelligence Division</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <!-- Заголовок в стиле военных документов -->
+        <header class="header">
+            <div class="classification-bar">
+                <span class="classified">CLASSIFIED</span>
+                <span class="document-id">DOC-ID: AI-DET-1945</span>
+                <span class="classified">CLASSIFIED</span>
+            </div>
+            <h1 class="main-title">
+                <span class="department">U.S. ARMY INTELLIGENCE DIVISION</span>
+                <span class="subtitle">PHOTOGRAPHIC AUTHENTICITY VERIFICATION SYSTEM</span>
+                <span class="year">Est. 1945 - Modernized 2025</span>
+            </h1>
+            <div class="stamp-container">
+                <div class="stamp">TOP SECRET</div>
+            </div>
+        </header>
+
+        <!-- Основная секция -->
+        <main class="main-content">
+            <div class="mission-brief">
+                <h2 class="section-title">MISSION BRIEFING</h2>
+                <p class="briefing-text">
+                    This system utilizes advanced multimodal intelligence analysis (CLIP-based neural networks)
+                    to determine the authenticity of World War II photographs. Upload any image and provide
+                    a brief description to receive a comprehensive authenticity assessment.
+                </p>
+                <div class="warning-box">
+                    <strong>⚠ SECURITY NOTICE:</strong> All submitted images are analyzed using classified
+                    AI technology developed for detecting synthetic propaganda materials.
+                </div>
+            </div>
+
+            <!-- Форма загрузки -->
+            <div class="upload-section">
+                <h2 class="section-title">SUBMIT PHOTOGRAPH FOR ANALYSIS</h2>
+                <form id="uploadForm" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <label for="fileInput" class="form-label">
+                            <span class="label-text">SELECT PHOTOGRAPH</span>
+                            <span class="label-subtext">Supported formats: JPG, PNG, GIF, BMP (Max 16MB)</span>
+                        </label>
+                        <div class="file-input-wrapper">
+                            <input type="file" id="fileInput" name="file" accept="image/*" required>
+                            <div class="file-input-display" id="fileDisplay">
+                                <span class="upload-icon">📁</span>
+                                <span class="upload-text">Click to select image or drag & drop here</span>
+                            </div>
+                        </div>
+                        <div id="imagePreview" class="image-preview"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="captionInput" class="form-label">
+                            <span class="label-text">PHOTOGRAPH DESCRIPTION</span>
+                            <span class="label-subtext">Provide contextual information about the image</span>
+                        </label>
+                        <textarea
+                            id="captionInput"
+                            name="caption"
+                            rows="3"
+                            placeholder="e.g., American soldiers during D-Day landing, 1944..."
+                            class="form-textarea"
+                        ></textarea>
+                    </div>
+
+                    <button type="submit" class="submit-btn" id="analyzeBtn">
+                        <span class="btn-text">COMMENCE ANALYSIS</span>
+                        <span class="btn-icon">🔍</span>
+                    </button>
+                </form>
+
+                <!-- Индикатор загрузки -->
+                <div id="loadingIndicator" class="loading-indicator" style="display: none;">
+                    <div class="loading-spinner"></div>
+                    <p class="loading-text">ANALYZING PHOTOGRAPH... PLEASE STAND BY...</p>
+                </div>
+            </div>
+
+            <!-- Результаты анализа -->
+            <div id="resultsSection" class="results-section" style="display: none;">
+                <h2 class="section-title">ANALYSIS REPORT</h2>
+                <div class="report-container">
+                    <div class="report-header">
+                        <div class="report-stamp" id="reportStamp">AUTHENTIC</div>
+                        <div class="report-meta">
+                            <span class="report-date" id="reportDate"></span>
+                            <span class="report-confidence">CONFIDENCE: <span id="confidenceValue">--</span>%</span>
+                        </div>
+                    </div>
+
+                    <div class="verdict-box" id="verdictBox">
+                        <div class="verdict-label">CLASSIFICATION:</div>
+                        <div class="verdict-text" id="verdictText">--</div>
+                    </div>
+
+                    <div class="metrics-grid">
+                        <div class="metric-card">
+                            <div class="metric-label">AUTHENTIC PROBABILITY</div>
+                            <div class="metric-value" id="probReal">--</div>
+                            <div class="metric-bar">
+                                <div class="metric-fill metric-fill-real" id="barReal"></div>
+                            </div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-label">SYNTHETIC PROBABILITY</div>
+                            <div class="metric-value" id="probFake">--</div>
+                            <div class="metric-bar">
+                                <div class="metric-fill metric-fill-fake" id="barFake"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="interpretation-box">
+                        <h3>INTERPRETATION GUIDE</h3>
+                        <p id="interpretationText">--</p>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Футер -->
+        <footer class="footer">
+            <div class="classification-bar">
+                <span class="classified">CLASSIFIED MATERIAL - HANDLE WITH CARE</span>
+            </div>
+            <p class="footer-text">
+                Powered by CLIP Multimodal AI | Developed for WWII Historical Research
+            </p>
+        </footer>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>
